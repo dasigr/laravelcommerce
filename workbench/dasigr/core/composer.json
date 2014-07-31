@@ -1,0 +1,23 @@
+{
+    "name": "dasigr/core",
+    "description": "",
+    "authors": [
+        {
+            "name": "Romualdo Dasig",
+            "email": "dasig.rg@a5project.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "4.2.*"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations"
+        ],
+        "psr-0": {
+            "Dasigr\\Core\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
