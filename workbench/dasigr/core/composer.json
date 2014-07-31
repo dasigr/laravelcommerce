@@ -1,6 +1,6 @@
 {
-    "name": "dasigr/core",
-    "description": "",
+    "name": "Core",
+    "description": "Core package.",
     "authors": [
         {
             "name": "Romualdo Dasig",
@@ -13,6 +13,7 @@
     },
     "autoload": {
         "classmap": [
+            "src/controllers",
             "src/migrations"
         ],
         "psr-0": {

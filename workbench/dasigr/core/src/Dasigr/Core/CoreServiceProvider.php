@@ -19,6 +19,8 @@ class CoreServiceProvider extends ServiceProvider {
 	public function boot()
 	{
 		$this->package('dasigr/core');
+        
+        include __DIR__.'/../../routes.php';
 	}
 
 	/**
