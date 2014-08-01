@@ -1,6 +1,8 @@
 {
     "name": "Core",
     "description": "Core package.",
+    "keywords": ["laravel"],
+	"license": "MIT",
     "authors": [
         {
             "name": "Romualdo Dasig",
@@ -13,7 +15,6 @@
     },
     "autoload": {
         "classmap": [
-            "src/controllers",
             "src/migrations"
         ],
         "psr-0": {

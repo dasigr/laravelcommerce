@@ -1,6 +1,14 @@
-<?php
+<?php namespace Dasigr\Core\Controllers;
+
+use Illuminate\Support\Facades\Input;
+use Dasigr\Core\Repositories\UserRepository;
 
 class UserController extends \BaseController {
+    
+    public function __construct(UserRepository $repo)
+	{
+		$this->repo = $repo;
+	}
 
 	/**
 	 * Display a listing of the resource.
@@ -9,20 +17,8 @@ class UserController extends \BaseController {
 	 */
 	public function index()
 	{
-		return 'Welcome User.';
+		return $this->repo->all();
 	}
-
-
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
-
 
 	/**
 	 * Store a newly created resource in storage.
@@ -31,9 +27,8 @@ class UserController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		return $this->repo->save(Input::all());
 	}
-
 
 	/**
 	 * Display the specified resource.
@@ -43,21 +38,8 @@ class UserController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		return $this->repo->find($id);
 	}
-
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
 
 	/**
 	 * Update the specified resource in storage.
@@ -67,9 +49,8 @@ class UserController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		return $this->repo->update($id, Input::all());
 	}
-
 
 	/**
 	 * Remove the specified resource from storage.
@@ -79,8 +60,7 @@ class UserController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		return $this->repo->delete($id);
 	}
-
-
+    
 }

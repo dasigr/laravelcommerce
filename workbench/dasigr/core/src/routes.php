@@ -14,7 +14,7 @@
 // 'before' => 'basic.once'
 Route::group(array('prefix' => 'v1'), function()
 {
-    Route::resource('user', 'UserController');
+    Route::resource('user', 'Dasigr\Core\Controllers\UserController');
 });
 
 Route::get('/', function()
