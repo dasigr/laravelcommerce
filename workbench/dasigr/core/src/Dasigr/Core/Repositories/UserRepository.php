@@ -1,5 +1,6 @@
 <?php namespace Dasigr\Core\Repositories;
 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Dasigr\Core\Entities\User;
 
@@ -48,6 +49,8 @@ class UserRepository {
     public function save($data)
     {
         $model = new User();
+        
+        $data['password'] = Hash::make($data['password']);
         $model->fill($data);
         
         if ($model->save()) {

@@ -11,11 +11,16 @@
 |
 */
 
-// 'before' => 'basic.once'
-Route::group(array('prefix' => 'v1'), function()
-{
-    Route::resource('user', 'Dasigr\Core\Controllers\UserController');
-});
+Route::group(
+    array(
+        'before' => 'auth.basic',
+        'prefix' => 'v1/admin',
+        'namespace' => 'Dasigr\Core\Controllers'
+    ), function()
+    {
+        Route::resource('user', 'UserController');
+    }
+);
 
 Route::get('/', function()
 {
