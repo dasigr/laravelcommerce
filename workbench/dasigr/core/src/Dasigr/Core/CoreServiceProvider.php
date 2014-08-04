@@ -21,6 +21,7 @@ class CoreServiceProvider extends ServiceProvider {
 		$this->package('dasigr/core');
         
         include __DIR__.'/../../routes.php';
+        include __DIR__.'/../../errors.php';
 	}
 
 	/**

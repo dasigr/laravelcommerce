@@ -6,8 +6,8 @@ use Illuminate\Auth\UserTrait;
 use Illuminate\Auth\Reminders\RemindableTrait;
 use Illuminate\Database\Eloquent\SoftDeletingTrait;
 
-class User extends \Eloquent implements UserInterface, RemindableInterface
-{
+class User extends \Eloquent implements UserInterface, RemindableInterface {
+    
     use UserTrait;
     use RemindableTrait;
     use SoftDeletingTrait;
@@ -32,4 +32,15 @@ class User extends \Eloquent implements UserInterface, RemindableInterface
 	 * @var array
 	 */
 	protected $fillable = array('username', 'email', 'password');
+    
+    /**
+     * Field validation rules.
+     * 
+     * @var array
+     */
+    static $rules = array(
+        'username' => 'required|unique:users,username',
+        'email' => 'required|unique:users,email',
+        'password' => 'required'
+    );
 }

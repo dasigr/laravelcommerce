@@ -1,12 +1,11 @@
 <?php namespace Dasigr\Core\Repositories;
 
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Log;
 use Dasigr\Core\ValidationException;
-use Dasigr\Core\Entities\User;
+use Dasigr\Core\Entities\Role;
 
-class UserRepository {
+class RoleRepository {
     
     /**
 	 * Update the specified resource in storage.
@@ -16,7 +15,7 @@ class UserRepository {
 	 */
     public function all()
     {
-        $collection = User::paginate();
+        $collection = Role::paginate();
         
         if ($collection) {
             return $collection;
@@ -33,13 +32,13 @@ class UserRepository {
 	 */
     public function find($id)
     {
-        $model = User::find($id);
+        $model = Role::find($id);
         
         if ($model) {
             return $model;
         }
         
-        return 'User not found.';
+        return 'Role not found.';
     }
 
     /**
@@ -52,15 +51,14 @@ class UserRepository {
     {
         $this->validate($data);
         
-        $model = new User();
-        $data['password'] = Hash::make($data['password']);
+        $model = new Role();
         $model->fill($data);
         
         if ($model->save()) {
-            return 'User was saved.';
+            return 'Role was saved.';
         }
         
-        return 'User was not saved.';
+        return 'Role was not saved.';
     }
 
     /**
@@ -77,10 +75,10 @@ class UserRepository {
         $model->fill($data);
         
         if ($model->update()) {
-            return 'User was updated.';
+            return 'Role was updated.';
         }
         
-        return 'User was not updated.';
+        return 'Role was not updated.';
     }
 
     /**
@@ -94,10 +92,10 @@ class UserRepository {
         $model = $this->find($id);
         
         if ($model->delete()) {
-            return 'User was deleted.';
+            return 'Role was deleted.';
         }
         
-        return 'User was not deleted.';
+        return 'Role was not deleted.';
     }
 
     /**
@@ -108,10 +106,10 @@ class UserRepository {
 	 */
     public function validate($data, $id = null)
     {
-        $rules = User::$rules;
+        $rules = Role::$rules;
         
         if ($id) {
-            $rules['username'] = 'required|unique:users,username,'.$id;
+            $rules['name'] = 'required|unique:role,name,'.$id;
         }
         
         $validator = Validator::make($data, $rules);
