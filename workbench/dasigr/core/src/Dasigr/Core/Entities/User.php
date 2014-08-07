@@ -43,4 +43,14 @@ class User extends \Eloquent implements UserInterface, RemindableInterface {
         'email' => 'required|unique:users,email',
         'password' => 'required'
     );
+    
+    /**
+     * Define User to Role relationship.
+     * 
+     * @return type
+     */
+    public function roles()
+    {
+        return $this->belongsToMany('Dasigr\Core\Entities\Role', 'user_roles', 'user_id', 'role_id');
+    }
 }

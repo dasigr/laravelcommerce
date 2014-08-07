@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Dasigr\Core\ValidationException;
 use Dasigr\Core\Entities\User;
@@ -51,12 +52,19 @@ class UserRepository {
     public function save($data)
     {
         $this->validate($data);
-        
-        $model = new User();
         $data['password'] = Hash::make($data['password']);
-        $model->fill($data);
         
-        if ($model->save()) {
+        $result = DB::transaction(function () use($data) {
+            $user = new User();
+            $user->fill($data);
+
+            if ($user->save()) {
+                $user->roles()->sync($data['roles']);
+                return true;
+            }
+        });
+        
+        if ($result) {
             return 'User was saved.';
         }
         
@@ -72,11 +80,21 @@ class UserRepository {
     public function update($id, $data)
     {
         $this->validate($data, $id);
+        if (isset($data['password'])) {
+            $data['password'] = Hash::make($data['password']);
+        }
         
-        $model = $this->find($id);
-        $model->fill($data);
+        $result = DB::transaction(function () use($data, $id) {
+            $user = $this->find($id);
+            $user->fill($data);
+
+            if ($user->save()) {
+                $user->roles()->sync($data['roles']);
+                return true;
+            }
+        });
         
-        if ($model->update()) {
+        if ($result) {
             return 'User was updated.';
         }
         
@@ -112,6 +130,8 @@ class UserRepository {
         
         if ($id) {
             $rules['username'] = 'required|unique:users,username,'.$id;
+            $rules['email'] = 'required|unique:users,email,'.$id;
+            $rules['password'] = 'sometimes|required';
         }
         
         $validator = Validator::make($data, $rules);
