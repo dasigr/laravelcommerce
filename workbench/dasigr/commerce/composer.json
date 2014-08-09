@@ -1,0 +1,25 @@
+{
+    "name": "dasigr/commerce",
+    "description": "Commerce packge for Laravel.",
+    "license": "MIT",
+    "keywords": ["laravel", "commerce"],
+    "authors": [
+        {
+            "name": "Romualdo Dasig",
+            "email": "dasig.rg@a5project.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "4.2.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.0.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Dasigr\\Commerce": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
