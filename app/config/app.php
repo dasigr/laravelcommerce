@@ -122,7 +122,7 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
         'Dasigr\Core\CoreServiceProvider',
-
+        'Dasigr\Commerce\CommerceServiceProvider',
 	),
 
 	/*

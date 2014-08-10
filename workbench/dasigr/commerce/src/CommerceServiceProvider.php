@@ -18,7 +18,7 @@ class CommerceServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		//
+		$this->package('dasigr/commerce');
 	}
 
 	/**

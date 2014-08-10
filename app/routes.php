@@ -11,6 +11,17 @@
 |
 */
 
+Route::group(
+    array(
+        'before' => 'auth.basic',
+        'prefix' => 'v1/admin',
+        'namespace' => 'Dasigr\Commerce\Controllers'
+    ), function()
+    {
+        Route::resource('products', 'ProductController');
+    }
+);
+
 Route::get('/', function()
 {
 	return View::make('hello');
