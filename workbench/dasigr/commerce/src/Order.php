@@ -93,7 +93,7 @@ class Order extends Helper {
     public function add($sku, $value, $action = null)
     {
         $product = new Product(
-            $sky,
+            $sku,
             $value,
             $this->region->currency,
             $this->region->tax,
