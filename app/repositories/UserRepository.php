@@ -1,12 +1,7 @@
-<?php namespace Dasigr\Core\Repositories;
+<?php
 
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Log;
-use Dasigr\Core\ValidationException;
-use Dasigr\Core\Entities\Role;
+class UserRepository {
 
-class RoleRepository {
-    
     /**
 	 * Update the specified resource in storage.
 	 *
@@ -15,15 +10,15 @@ class RoleRepository {
 	 */
     public function all()
     {
-        $collection = Role::paginate();
-        
+        $collection = User::paginate();
+
         if ($collection) {
             return $collection;
         }
-        
+
         return 'New results found.';
     }
-    
+
     /**
 	 * Update the specified resource in storage.
 	 *
@@ -32,13 +27,13 @@ class RoleRepository {
 	 */
     public function find($id)
     {
-        $model = Role::find($id);
-        
+        $model = User::find($id);
+
         if ($model) {
             return $model;
         }
-        
-        return 'Role not found.';
+
+        return 'User not found.';
     }
 
     /**
@@ -50,15 +45,23 @@ class RoleRepository {
     public function save($data)
     {
         $this->validate($data);
-        
-        $model = new Role();
-        $model->fill($data);
-        
-        if ($model->save()) {
-            return 'Role was saved.';
+        $data['password'] = Hash::make($data['password']);
+
+        $result = DB::transaction(function () use($data) {
+            $user = new User();
+            $user->fill($data);
+
+            if ($user->save()) {
+                $user->roles()->sync($data['roles']);
+                return true;
+            }
+        });
+
+        if ($result) {
+            return 'User was saved.';
         }
-        
-        return 'Role was not saved.';
+
+        return 'User was not saved.';
     }
 
     /**
@@ -70,15 +73,25 @@ class RoleRepository {
     public function update($id, $data)
     {
         $this->validate($data, $id);
-        
-        $model = $this->find($id);
-        $model->fill($data);
-        
-        if ($model->update()) {
-            return 'Role was updated.';
+        if (isset($data['password'])) {
+            $data['password'] = Hash::make($data['password']);
         }
-        
-        return 'Role was not updated.';
+
+        $result = DB::transaction(function () use($data, $id) {
+            $user = $this->find($id);
+            $user->fill($data);
+
+            if ($user->save()) {
+                $user->roles()->sync($data['roles']);
+                return true;
+            }
+        });
+
+        if ($result) {
+            return 'User was updated.';
+        }
+
+        return 'User was not updated.';
     }
 
     /**
@@ -90,12 +103,12 @@ class RoleRepository {
     public function delete($id)
     {
         $model = $this->find($id);
-        
+
         if ($model->delete()) {
-            return 'Role was deleted.';
+            return 'User was deleted.';
         }
-        
-        return 'Role was not deleted.';
+
+        return 'User was not deleted.';
     }
 
     /**
@@ -106,18 +119,20 @@ class RoleRepository {
 	 */
     public function validate($data, $id = null)
     {
-        $rules = Role::$rules;
-        
+        $rules = User::$rules;
+
         if ($id) {
-            $rules['name'] = 'required|unique:role,name,'.$id;
+            $rules['username'] = 'required|unique:users,username,'.$id;
+            $rules['email'] = 'required|unique:users,email,'.$id;
+            $rules['password'] = 'sometimes|required';
         }
-        
+
         $validator = Validator::make($data, $rules);
-        
+
         if ($validator->fails()) {
             throw new ValidationException($validator, 401);
         }
-        
+
         return true;
     }
 }

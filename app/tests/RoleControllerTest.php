@@ -1,6 +1,6 @@
 <?php
 
-class UserControllerTest extends TestCase {
+class RoleControllerTest extends TestCase {
 
 	/**
 	 * Test index route.
@@ -9,8 +9,8 @@ class UserControllerTest extends TestCase {
 	 */
 	public function testIndex()
     {
-        User::shouldReceive('all')->once()->andReturn('foo');
-        $this->call('GET', 'v1/admin/user');
+        Role::shouldReceive('all')->once()->andReturn('foo');
+        $this->call('GET', 'v1/admin/role');
         $this->assertRequestOk();
     }
 
@@ -21,8 +21,8 @@ class UserControllerTest extends TestCase {
 	 */
     public function testStore()
     {
-        User::shouldReceive('save')->once()->andReturn('foo');
-        $this->call('POST', 'v1/admin/user');
+        Role::shouldReceive('save')->once()->andReturn('foo');
+        $this->call('POST', 'v1/admin/role');
         $this->assertRequestOk();
     }
 
@@ -33,8 +33,8 @@ class UserControllerTest extends TestCase {
 	 */
     public function testShow()
     {
-        User::shouldReceive('find')->once()->andReturn('foo');
-        $this->call('GET', 'v1/admin/user/1');
+        Role::shouldReceive('find')->once()->andReturn('foo');
+        $this->call('GET', 'v1/admin/role/1');
         $this->assertRequestOk();
     }
 
@@ -45,8 +45,8 @@ class UserControllerTest extends TestCase {
 	 */
     public function testUpdate()
     {
-        User::shouldReceive('update')->once()->andReturn('foo');
-        $this->call('PUT', 'v1/admin/user/1');
+        Role::shouldReceive('update')->once()->andReturn('foo');
+        $this->call('PUT', 'v1/admin/role/1');
         $this->assertRequestOk();
     }
 
@@ -57,8 +57,8 @@ class UserControllerTest extends TestCase {
 	 */
     public function testDestroy()
     {
-        User::shouldReceive('delete')->once()->andReturn('foo');
-        $this->call('DELETE', 'v1/admin/user/1');
+        Role::shouldReceive('delete')->once()->andReturn('foo');
+        $this->call('DELETE', 'v1/admin/role/1');
         $this->assertRequestOk();
     }
 

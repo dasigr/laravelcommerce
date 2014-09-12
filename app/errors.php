@@ -1,8 +1,6 @@
-<?php namespace Dasigr\Core;
+<?php
 
-use \Exception;
-
-class ValidationException extends Exception {
+class ValidationException extends \Exception {
 
     /**
      * @param Validator $validator failed validator object

@@ -1,7 +1,7 @@
-<?php namespace Dasigr\Core\Repositories;
+<?php
 
-class UserRepositoryInterface {
-    
+interface UserRepositoryInterface {
+
     /**
 	 * Update the specified resource in storage.
 	 *
@@ -9,6 +9,7 @@ class UserRepositoryInterface {
 	 * @return Response
 	 */
     public function all();
+
     /**
 	 * Update the specified resource in storage.
 	 *
@@ -56,11 +57,12 @@ class UserRepositoryInterface {
 	 * @return Response
 	 */
     public function instance($data = array());
-    
+
     /**
      * Return an error message.
-     * 
+     *
      * @return string
      */
     public function error();
+
 }

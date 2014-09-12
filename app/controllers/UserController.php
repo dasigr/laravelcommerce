@@ -1,11 +1,10 @@
-<?php namespace Dasigr\Core\Controllers;
+<?php
 
-use Illuminate\Support\Facades\Input;
-use Dasigr\Core\Repositories\RoleRepository;
+use \UserRepositoryInterface;
 
-class RoleController extends \BaseController {
-    
-    public function __construct(RoleRepository $repo)
+class UserController extends \BaseController {
+
+    public function __construct(UserRepositoryInterface $repo)
 	{
 		$this->repo = $repo;
 	}
@@ -62,5 +61,5 @@ class RoleController extends \BaseController {
 	{
 		return $this->repo->delete($id);
 	}
-    
+
 }

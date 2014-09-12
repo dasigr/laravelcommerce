@@ -14,8 +14,10 @@
 			"app/commands",
 			"app/controllers",
 			"app/models",
+            "app/repositories",
 			"app/database/migrations",
 			"app/database/seeds",
+            "app/errors.php",
 			"app/tests/TestCase.php"
 		]
 	},

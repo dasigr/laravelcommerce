@@ -2,6 +2,26 @@
 
 class TestCase extends Illuminate\Foundation\Testing\TestCase {
 
+    /**
+	 * Setup the test environment.
+	 *
+	 * @return void
+	 */
+    public function setUp()
+    {
+        parent::setUp();
+        Artisan::call('migrate');
+        Artisan::call('db:seed');
+    }
+
+    /**
+     * Teardown objects.
+     */
+    public function tearDown()
+    {
+        Mockery::close();
+    }
+
 	/**
 	 * Creates the application.
 	 *
@@ -15,5 +35,13 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
 
 		return require __DIR__.'/../../bootstrap/start.php';
 	}
+
+    /**
+     * Assert if Response is Ok
+     */
+    public function assertRequestOk()
+    {
+        $this->assertTrue($this->client->getResponse()->isOk());
+    }
 
 }

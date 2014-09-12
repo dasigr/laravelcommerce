@@ -13,6 +13,17 @@
 
 Route::group(
     array(
+//        'before' => 'auth.basic',
+        'prefix' => 'v1/admin'
+    ), function()
+    {
+        Route::resource('user', 'UserController');
+        Route::resource('role', 'RoleController');
+    }
+);
+
+Route::group(
+    array(
         'before' => 'auth.basic',
         'prefix' => 'v1/admin',
         'namespace' => 'Dasigr\Commerce\Controllers'
