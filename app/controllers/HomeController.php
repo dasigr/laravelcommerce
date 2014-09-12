@@ -17,7 +17,11 @@ class HomeController extends BaseController {
 
 	public function showWelcome()
 	{
-		return View::make('hello');
+        $data = array(
+            'site_name' => 'Laravel Commerce | An E-Commerce website built with Laravel'
+        );
+
+		return View::make('hello', $data);
 	}
 
 }

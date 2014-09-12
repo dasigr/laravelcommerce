@@ -35,5 +35,12 @@ Route::group(
 
 Route::get('/', function()
 {
-	return View::make('hello');
+	$data = array(
+        'page_title' => 'Laravel Commerce | An E-Commerce website built with Laravel',
+        'site_name' => 'Laravel Commerce',
+        'slogan' => 'An E-Commerce website built with Laravel',
+        'base_url' => 'http://laravelcommerce.local'
+    );
+
+    return View::make('templates.html', $data)->nest('page', 'templates.page', $data);
 });
