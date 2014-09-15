@@ -51,10 +51,10 @@ interface RoleRepositoryInterface {
     public function validate($data, $id = null);
 
     /**
-	 * Update the specified resource in storage.
+	 * Create an instance.
 	 *
-	 * @param  int  $id
-	 * @return Response
+	 * @param array $data
+	 * @return Model
 	 */
     public function instance($data = array());
 

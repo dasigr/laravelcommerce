@@ -1,6 +1,6 @@
 <?php
 
-class RoleRepository {
+class RoleRepository implements RoleRepositoryInterface {
 
     /**
 	 * Update the specified resource in storage.
@@ -115,4 +115,26 @@ class RoleRepository {
 
         return true;
     }
+
+    /**
+	 * Create an instance.
+	 *
+	 * @param array $data
+	 * @return Model
+	 */
+    public function instance($data = array())
+    {
+        return new Role($data);
+    }
+
+    /**
+     * Throw an Exception error
+     *
+     * @throws Exception
+     */
+    public function error()
+    {
+        throw new Exception('Something went wrong!');
+    }
+
 }

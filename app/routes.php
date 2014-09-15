@@ -13,7 +13,7 @@
 
 Route::group(
     array(
-//        'before' => 'auth.basic',
+        'before' => 'auth.basic',
         'prefix' => 'v1/admin'
     ), function()
     {

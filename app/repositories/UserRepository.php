@@ -1,12 +1,12 @@
 <?php
 
-class UserRepository {
+class UserRepository implements UserRepositoryInterface {
 
     /**
-	 * Update the specified resource in storage.
+	 * Get all of the models from the database.
 	 *
-	 * @param  int  $id
-	 * @return Response
+	 * @param  array  $columns
+	 * @return \Illuminate\Database\Eloquent\Collection|static[]
 	 */
     public function all()
     {
@@ -20,10 +20,11 @@ class UserRepository {
     }
 
     /**
-	 * Update the specified resource in storage.
+	 * Find a model by its primary key.
 	 *
-	 * @param  int  $id
-	 * @return Response
+	 * @param  mixed  $id
+	 * @param  array  $columns
+	 * @return \Illuminate\Support\Collection|static
 	 */
     public function find($id)
     {
@@ -37,10 +38,10 @@ class UserRepository {
     }
 
     /**
-	 * Update the specified resource in storage.
+	 * Save the model to the database.
 	 *
-	 * @param  int  $id
-	 * @return Response
+	 * @param  array  $options
+	 * @return bool
 	 */
     public function save($data)
     {
@@ -65,10 +66,10 @@ class UserRepository {
     }
 
     /**
-	 * Update the specified resource in storage.
+	 * Update the model in the database.
 	 *
-	 * @param  int  $id
-	 * @return Response
+	 * @param  array  $attributes
+	 * @return bool|int
 	 */
     public function update($id, $data)
     {
@@ -95,10 +96,10 @@ class UserRepository {
     }
 
     /**
-	 * Update the specified resource in storage.
+	 * Delete the model from the database.
 	 *
-	 * @param  int  $id
-	 * @return Response
+	 * @return bool|null
+	 * @throws \Exception
 	 */
     public function delete($id)
     {
@@ -135,4 +136,26 @@ class UserRepository {
 
         return true;
     }
+
+    /**
+	 * Create an instance.
+	 *
+	 * @param array $data
+	 * @return Model
+	 */
+    public function instance($data = array())
+    {
+        return new User($data);
+    }
+
+    /**
+     * Throw an Exception error
+     *
+     * @throws Exception
+     */
+    public function error()
+    {
+        throw new Exception('Something went wrong!');
+    }
+
 }
