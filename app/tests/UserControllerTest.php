@@ -10,7 +10,7 @@ class UserControllerTest extends TestCase {
 	public function testIndex()
     {
         User::shouldReceive('all')->once()->andReturn('foo');
-        $this->call('GET', 'v1/admin/user');
+        $this->call('GET', 'v1/admin/users');
         $this->assertRequestOk();
     }
 
@@ -22,7 +22,7 @@ class UserControllerTest extends TestCase {
     public function testStore()
     {
         User::shouldReceive('save')->once()->andReturn('foo');
-        $this->call('POST', 'v1/admin/user');
+        $this->call('POST', 'v1/admin/users');
         $this->assertRequestOk();
     }
 
@@ -34,7 +34,7 @@ class UserControllerTest extends TestCase {
     public function testShow()
     {
         User::shouldReceive('find')->once()->andReturn('foo');
-        $this->call('GET', 'v1/admin/user/1');
+        $this->call('GET', 'v1/admin/users/1');
         $this->assertRequestOk();
     }
 
@@ -46,7 +46,7 @@ class UserControllerTest extends TestCase {
     public function testUpdate()
     {
         User::shouldReceive('update')->once()->andReturn('foo');
-        $this->call('PUT', 'v1/admin/user/1');
+        $this->call('PUT', 'v1/admin/users/1');
         $this->assertRequestOk();
     }
 
@@ -58,7 +58,7 @@ class UserControllerTest extends TestCase {
     public function testDestroy()
     {
         User::shouldReceive('delete')->once()->andReturn('foo');
-        $this->call('DELETE', 'v1/admin/user/1');
+        $this->call('DELETE', 'v1/admin/users/1');
         $this->assertRequestOk();
     }
 
