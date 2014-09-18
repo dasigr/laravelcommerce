@@ -1,12 +1,7 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 use \ProductRepositoryInterface;
+use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 
 /**
  * Description of ProductRepository
@@ -19,7 +14,7 @@ class ProductRepository implements ProductRepositoryInterface {
 	 * Update the specified resource in storage.
 	 *
 	 * @param  int  $id
-	 * @return Response
+	 * @return Collection
 	 */
     public function all()
     {
@@ -29,14 +24,15 @@ class ProductRepository implements ProductRepositoryInterface {
             return $collection;
         }
 
-        return 'New results found.';
+        throw new Exception('Something went wrong!', 500);
     }
 
     /**
-	 * Update the specified resource in storage.
+	 * Find a model by its primary key.
 	 *
-	 * @param  int  $id
-	 * @return Response
+	 * @param  mixed  $id
+	 * @param  array  $columns
+	 * @return \Illuminate\Support\Collection|static
 	 */
     public function find($id)
     {
@@ -46,34 +42,30 @@ class ProductRepository implements ProductRepositoryInterface {
             return $model;
         }
 
-        return 'Product not found.';
+        throw new ResourceNotFoundException('Product was not found.');
     }
 
     /**
-	 * Update the specified resource in storage.
+	 * Save the model to the database.
 	 *
-	 * @param  int  $id
-	 * @return Response
+	 * @param  array  $data
+	 * @return bool
 	 */
     public function save($data)
     {
         $this->validate($data);
 
-        $model = new Product();
+        $model = $this->instance();
         $model->fill($data);
 
-        if ($model->save()) {
-            return 'Product was saved.';
-        }
-
-        return 'Product was not saved.';
+        return $model->save();
     }
 
     /**
 	 * Update the specified resource in storage.
 	 *
 	 * @param  int  $id
-	 * @return Response
+	 * @return bool
 	 */
     public function update($id, $data)
     {
@@ -82,28 +74,19 @@ class ProductRepository implements ProductRepositoryInterface {
         $model = $this->find($id);
         $model->fill($data);
 
-        if ($model->update()) {
-            return 'Product was updated.';
-        }
-
-        return 'Product was not updated.';
+        return $model->update();
     }
 
     /**
 	 * Update the specified resource in storage.
 	 *
 	 * @param  int  $id
-	 * @return Response
+	 * @return bool
 	 */
     public function delete($id)
     {
         $model = $this->find($id);
-
-        if ($model->delete()) {
-            return 'Product was deleted.';
-        }
-
-        return 'Product was not deleted.';
+        return $model->delete();
     }
 
     /**

@@ -16,7 +16,7 @@ class RoleRepository implements RoleRepositoryInterface {
             return $collection;
         }
 
-        return 'New results found.';
+        return 'No results found.';
     }
 
     /**

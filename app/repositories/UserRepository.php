@@ -16,7 +16,7 @@ class UserRepository implements UserRepositoryInterface {
             return $collection;
         }
 
-        return 'New results found.';
+        return 'No results found.';
     }
 
     /**

@@ -18,6 +18,7 @@ class CreateProductTable extends Migration {
 			$table->increments('id');
             $table->string('name', 60)->unique();
             $table->string('description', 128);
+            $table->timestamps();
 		});
 	}
 
