@@ -14,7 +14,7 @@
 Route::group(
     array(
         'before' => 'auth.basic',
-        'prefix' => 'v1/admin'
+        'prefix' => 'v1'
     ), function()
     {
         Route::resource('users', 'UserController');

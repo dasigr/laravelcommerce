@@ -21,7 +21,7 @@ class ProductControllerTest extends TestCase {
 	public function testIndex()
     {
         Product::shouldReceive('all')->once()->andReturn('foo');
-        $this->call('GET', 'v1/admin/products');
+        $this->call('GET', 'v1/products');
         $this->assertRequestOk();
     }
 
@@ -33,7 +33,7 @@ class ProductControllerTest extends TestCase {
     public function testStore()
     {
         Product::shouldReceive('save')->once()->andReturn('foo');
-        $this->call('POST', 'v1/admin/products');
+        $this->call('POST', 'v1/products');
         $this->assertRequestOk();
     }
 
@@ -45,7 +45,7 @@ class ProductControllerTest extends TestCase {
     public function testShow()
     {
         Product::shouldReceive('find')->once()->andReturn('foo');
-        $this->call('GET', 'v1/admin/products/1');
+        $this->call('GET', 'v1/products/1');
         $this->assertRequestOk();
     }
 
@@ -57,7 +57,7 @@ class ProductControllerTest extends TestCase {
     public function testUpdate()
     {
         Product::shouldReceive('update')->once()->andReturn('foo');
-        $this->call('PUT', 'v1/admin/products/1');
+        $this->call('PUT', 'v1/products/1');
         $this->assertRequestOk();
     }
 
@@ -69,7 +69,7 @@ class ProductControllerTest extends TestCase {
     public function testDestroy()
     {
         Product::shouldReceive('delete')->once()->andReturn('foo');
-        $this->call('DELETE', 'v1/admin/products/1');
+        $this->call('DELETE', 'v1/products/1');
         $this->assertRequestOk();
     }
 

@@ -40,7 +40,7 @@ class UserRepository implements UserRepositoryInterface {
     /**
 	 * Save the model to the database.
 	 *
-	 * @param  array  $options
+	 * @param  array  $data
 	 * @return bool
 	 */
     public function save($data)

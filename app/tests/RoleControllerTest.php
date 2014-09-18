@@ -10,7 +10,7 @@ class RoleControllerTest extends TestCase {
 	public function testIndex()
     {
         Role::shouldReceive('all')->once()->andReturn('foo');
-        $this->call('GET', 'v1/admin/roles');
+        $this->call('GET', 'v1/roles');
         $this->assertRequestOk();
     }
 
@@ -22,7 +22,7 @@ class RoleControllerTest extends TestCase {
     public function testStore()
     {
         Role::shouldReceive('save')->once()->andReturn('foo');
-        $this->call('POST', 'v1/admin/roles');
+        $this->call('POST', 'v1/roles');
         $this->assertRequestOk();
     }
 
@@ -34,7 +34,7 @@ class RoleControllerTest extends TestCase {
     public function testShow()
     {
         Role::shouldReceive('find')->once()->andReturn('foo');
-        $this->call('GET', 'v1/admin/roles/1');
+        $this->call('GET', 'v1/roles/1');
         $this->assertRequestOk();
     }
 
@@ -46,7 +46,7 @@ class RoleControllerTest extends TestCase {
     public function testUpdate()
     {
         Role::shouldReceive('update')->once()->andReturn('foo');
-        $this->call('PUT', 'v1/admin/roles/1');
+        $this->call('PUT', 'v1/roles/1');
         $this->assertRequestOk();
     }
 
@@ -58,7 +58,7 @@ class RoleControllerTest extends TestCase {
     public function testDestroy()
     {
         Role::shouldReceive('delete')->once()->andReturn('foo');
-        $this->call('DELETE', 'v1/admin/roles/1');
+        $this->call('DELETE', 'v1/roles/1');
         $this->assertRequestOk();
     }
 
