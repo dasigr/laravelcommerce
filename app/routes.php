@@ -20,6 +20,8 @@ Route::group(
         Route::resource('users', 'UserController');
         Route::resource('roles', 'RoleController');
         Route::resource('products', 'ProductController');
+        Route::resource('terms', 'TermController');
+        Route::resource('vocabularies', 'VocabularyController');
     }
 );
 

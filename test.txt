@@ -1,0 +1,294 @@
+PHPUnit 3.7.21 by Sebastian Bergmann.
+
+Configuration read from D:\xampp\htdocs\laravelcommerce\phpunit.xml
+
+...................EEEEEFE.EE...............F.FF....
+
+Time: 4 seconds, Memory: 31.75Mb
+
+There were 8 errors:
+
+1) TermControllerTest::testIndex
+Illuminate\Database\QueryException: SQLSTATE[HY000]: General error: 1 no such table: product (SQL: select count(*) as aggregate from "product")
+
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Connection.php:625
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Connection.php:299
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Connection.php:617
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Connection.php:581
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Connection.php:304
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:1359
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:1349
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:1336
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:1775
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:1713
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:1630
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:276
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:247
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:3072
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:3086
+D:\xampp\htdocs\laravelcommerce\app\repositories\ProductRepository.php:21
+D:\xampp\htdocs\laravelcommerce\app\repositories\ProductRepository.php:21
+D:\xampp\htdocs\laravelcommerce\app\controllers\TermController.php:17
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\Controller.php:231
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\ControllerDispatcher.php:93
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\ControllerDispatcher.php:62
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\Router.php:962
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\Route.php:109
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\Router.php:1028
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\Router.php:996
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Foundation\Application.php:777
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Foundation\Application.php:747
+D:\xampp\htdocs\laravelcommerce\vendor\symfony\http-kernel\Symfony\Component\HttpKernel\Client.php:81
+D:\xampp\htdocs\laravelcommerce\vendor\symfony\browser-kit\Symfony\Component\BrowserKit\Client.php:327
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Foundation\Testing\ApplicationTrait.php:51
+D:\xampp\htdocs\laravelcommerce\app\tests\TermControllerTest.php:13
+
+Caused by
+PDOException: SQLSTATE[HY000]: General error: 1 no such table: product
+
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Connection.php:299
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Connection.php:617
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Connection.php:581
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Connection.php:304
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:1359
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:1349
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:1336
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:1775
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:1713
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:1630
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:276
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:247
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:3072
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:3086
+D:\xampp\htdocs\laravelcommerce\app\repositories\ProductRepository.php:21
+D:\xampp\htdocs\laravelcommerce\app\repositories\ProductRepository.php:21
+D:\xampp\htdocs\laravelcommerce\app\controllers\TermController.php:17
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\Controller.php:231
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\ControllerDispatcher.php:93
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\ControllerDispatcher.php:62
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\Router.php:962
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\Route.php:109
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\Router.php:1028
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\Router.php:996
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Foundation\Application.php:777
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Foundation\Application.php:747
+D:\xampp\htdocs\laravelcommerce\vendor\symfony\http-kernel\Symfony\Component\HttpKernel\Client.php:81
+D:\xampp\htdocs\laravelcommerce\vendor\symfony\browser-kit\Symfony\Component\BrowserKit\Client.php:327
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Foundation\Testing\ApplicationTrait.php:51
+D:\xampp\htdocs\laravelcommerce\app\tests\TermControllerTest.php:13
+
+2) TermControllerTest::testStore
+ValidationException: {"name":["The name field is required."]}
+
+D:\xampp\htdocs\laravelcommerce\app\repositories\ProductRepository.php:109
+D:\xampp\htdocs\laravelcommerce\app\repositories\ProductRepository.php:56
+D:\xampp\htdocs\laravelcommerce\app\controllers\TermController.php:27
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\Controller.php:231
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\ControllerDispatcher.php:93
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\ControllerDispatcher.php:62
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\Router.php:962
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\Route.php:109
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\Router.php:1028
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\Router.php:996
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Foundation\Application.php:777
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Foundation\Application.php:747
+D:\xampp\htdocs\laravelcommerce\vendor\symfony\http-kernel\Symfony\Component\HttpKernel\Client.php:81
+D:\xampp\htdocs\laravelcommerce\vendor\symfony\browser-kit\Symfony\Component\BrowserKit\Client.php:327
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Foundation\Testing\ApplicationTrait.php:51
+D:\xampp\htdocs\laravelcommerce\app\tests\TermControllerTest.php:25
+
+3) TermControllerTest::testShow
+Illuminate\Database\QueryException: SQLSTATE[HY000]: General error: 1 no such table: product (SQL: select * from "product" where "product"."id" = 1 limit 1)
+
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Connection.php:625
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Connection.php:299
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Connection.php:617
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Connection.php:581
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Connection.php:304
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:1359
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:1349
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:1336
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:415
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:151
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:125
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:82
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:644
+D:\xampp\htdocs\laravelcommerce\app\repositories\ProductRepository.php:39
+D:\xampp\htdocs\laravelcommerce\app\controllers\TermController.php:38
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\Controller.php:231
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\ControllerDispatcher.php:93
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\ControllerDispatcher.php:62
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\Router.php:962
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\Route.php:109
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\Router.php:1028
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\Router.php:996
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Foundation\Application.php:777
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Foundation\Application.php:747
+D:\xampp\htdocs\laravelcommerce\vendor\symfony\http-kernel\Symfony\Component\HttpKernel\Client.php:81
+D:\xampp\htdocs\laravelcommerce\vendor\symfony\browser-kit\Symfony\Component\BrowserKit\Client.php:327
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Foundation\Testing\ApplicationTrait.php:51
+D:\xampp\htdocs\laravelcommerce\app\tests\TermControllerTest.php:37
+
+Caused by
+PDOException: SQLSTATE[HY000]: General error: 1 no such table: product
+
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Connection.php:299
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Connection.php:617
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Connection.php:581
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Connection.php:304
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:1359
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:1349
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:1336
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:415
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:151
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:125
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:82
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:644
+D:\xampp\htdocs\laravelcommerce\app\repositories\ProductRepository.php:39
+D:\xampp\htdocs\laravelcommerce\app\controllers\TermController.php:38
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\Controller.php:231
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\ControllerDispatcher.php:93
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\ControllerDispatcher.php:62
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\Router.php:962
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\Route.php:109
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\Router.php:1028
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\Router.php:996
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Foundation\Application.php:777
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Foundation\Application.php:747
+D:\xampp\htdocs\laravelcommerce\vendor\symfony\http-kernel\Symfony\Component\HttpKernel\Client.php:81
+D:\xampp\htdocs\laravelcommerce\vendor\symfony\browser-kit\Symfony\Component\BrowserKit\Client.php:327
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Foundation\Testing\ApplicationTrait.php:51
+D:\xampp\htdocs\laravelcommerce\app\tests\TermControllerTest.php:37
+
+4) TermControllerTest::testUpdate
+ValidationException: {"name":["The name field is required."]}
+
+D:\xampp\htdocs\laravelcommerce\app\repositories\ProductRepository.php:109
+D:\xampp\htdocs\laravelcommerce\app\repositories\ProductRepository.php:72
+D:\xampp\htdocs\laravelcommerce\app\controllers\TermController.php:49
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\Controller.php:231
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\ControllerDispatcher.php:93
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\ControllerDispatcher.php:62
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\Router.php:962
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\Route.php:109
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\Router.php:1028
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\Router.php:996
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Foundation\Application.php:777
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Foundation\Application.php:747
+D:\xampp\htdocs\laravelcommerce\vendor\symfony\http-kernel\Symfony\Component\HttpKernel\Client.php:81
+D:\xampp\htdocs\laravelcommerce\vendor\symfony\browser-kit\Symfony\Component\BrowserKit\Client.php:327
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Foundation\Testing\ApplicationTrait.php:51
+D:\xampp\htdocs\laravelcommerce\app\tests\TermControllerTest.php:49
+
+5) TermControllerTest::testDestroy
+Illuminate\Database\QueryException: SQLSTATE[HY000]: General error: 1 no such table: product (SQL: select * from "product" where "product"."id" = 1 limit 1)
+
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Connection.php:625
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Connection.php:299
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Connection.php:617
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Connection.php:581
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Connection.php:304
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:1359
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:1349
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:1336
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:415
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:151
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:125
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:82
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:644
+D:\xampp\htdocs\laravelcommerce\app\repositories\ProductRepository.php:39
+D:\xampp\htdocs\laravelcommerce\app\repositories\ProductRepository.php:88
+D:\xampp\htdocs\laravelcommerce\app\controllers\TermController.php:60
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\Controller.php:231
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\ControllerDispatcher.php:93
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\ControllerDispatcher.php:62
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\Router.php:962
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\Route.php:109
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\Router.php:1028
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\Router.php:996
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Foundation\Application.php:777
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Foundation\Application.php:747
+D:\xampp\htdocs\laravelcommerce\vendor\symfony\http-kernel\Symfony\Component\HttpKernel\Client.php:81
+D:\xampp\htdocs\laravelcommerce\vendor\symfony\browser-kit\Symfony\Component\BrowserKit\Client.php:327
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Foundation\Testing\ApplicationTrait.php:51
+D:\xampp\htdocs\laravelcommerce\app\tests\TermControllerTest.php:61
+
+Caused by
+PDOException: SQLSTATE[HY000]: General error: 1 no such table: product
+
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Connection.php:299
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Connection.php:617
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Connection.php:581
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Connection.php:304
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:1359
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:1349
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Query\Builder.php:1336
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:415
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:151
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:125
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Builder.php:82
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Database\Eloquent\Model.php:644
+D:\xampp\htdocs\laravelcommerce\app\repositories\ProductRepository.php:39
+D:\xampp\htdocs\laravelcommerce\app\repositories\ProductRepository.php:88
+D:\xampp\htdocs\laravelcommerce\app\controllers\TermController.php:60
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\Controller.php:231
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\ControllerDispatcher.php:93
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\ControllerDispatcher.php:62
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\Router.php:962
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\Route.php:109
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\Router.php:1028
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Routing\Router.php:996
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Foundation\Application.php:777
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Foundation\Application.php:747
+D:\xampp\htdocs\laravelcommerce\vendor\symfony\http-kernel\Symfony\Component\HttpKernel\Client.php:81
+D:\xampp\htdocs\laravelcommerce\vendor\symfony\browser-kit\Symfony\Component\BrowserKit\Client.php:327
+D:\xampp\htdocs\laravelcommerce\vendor\laravel\framework\src\Illuminate\Foundation\Testing\ApplicationTrait.php:51
+D:\xampp\htdocs\laravelcommerce\app\tests\TermControllerTest.php:61
+
+6) TermRepositoryTest::testFindReturnsModel
+Symfony\Component\Routing\Exception\ResourceNotFoundException: Term was not found.
+
+D:\xampp\htdocs\laravelcommerce\app\repositories\TermRepository.php:40
+D:\xampp\htdocs\laravelcommerce\app\tests\TermRepositoryTest.php:26
+
+7) TermRepositoryTest::testUpdateSaves
+Symfony\Component\Routing\Exception\ResourceNotFoundException: Term was not found.
+
+D:\xampp\htdocs\laravelcommerce\app\repositories\TermRepository.php:40
+D:\xampp\htdocs\laravelcommerce\app\repositories\TermRepository.php:69
+D:\xampp\htdocs\laravelcommerce\app\tests\TermRepositoryTest.php:49
+
+8) TermRepositoryTest::testDeleteSaves
+Symfony\Component\Routing\Exception\ResourceNotFoundException: Term was not found.
+
+D:\xampp\htdocs\laravelcommerce\app\repositories\TermRepository.php:40
+D:\xampp\htdocs\laravelcommerce\app\repositories\TermRepository.php:83
+D:\xampp\htdocs\laravelcommerce\app\tests\TermRepositoryTest.php:57
+
+--
+
+
+There were 4 failures:
+
+1) TermRepositoryTest::testAllReturnsCollection
+Failed asserting that false is true.
+
+D:\xampp\htdocs\laravelcommerce\app\tests\TermRepositoryTest.php:21
+
+2) VocabularyRepositoryTest::testFindByIdReturnsModel
+Failed asserting that false is true.
+
+D:\xampp\htdocs\laravelcommerce\app\tests\VocabularyRepositoryTest.php:26
+
+3) VocabularyRepositoryTest::testUpdateSaves
+Failed asserting that false is true.
+
+D:\xampp\htdocs\laravelcommerce\app\tests\VocabularyRepositoryTest.php:49
+
+4) VocabularyRepositoryTest::testDestroySaves
+Failed asserting that false is true.
+
+D:\xampp\htdocs\laravelcommerce\app\tests\VocabularyRepositoryTest.php:56
+
+FAILURES!
+Tests: 52, Assertions: 44, Failures: 4, Errors: 8.
