@@ -14,13 +14,26 @@
 class ProductControllerTest extends TestCase {
 
     /**
+	 * Setup the test environment.
+	 *
+	 * @return void
+	 */
+    public function setUp()
+    {
+        parent::setUp();
+
+        $this->mock = Mockery::mock('ProductRepositoryInterface');
+        App::instance('ProductRepositoryInterface', $this->mock);
+    }
+
+    /**
 	 * Test index route.
 	 *
 	 * @return void
 	 */
 	public function testIndex()
     {
-        Product::shouldReceive('all')->once()->andReturn('foo');
+        $this->mock->shouldReceive('all')->once()->andReturn('foo');
         $this->call('GET', 'v1/products');
         $this->assertRequestOk();
     }
@@ -32,7 +45,7 @@ class ProductControllerTest extends TestCase {
 	 */
     public function testStore()
     {
-        Product::shouldReceive('save')->once()->andReturn('foo');
+        $this->mock->shouldReceive('save')->once()->andReturn('foo');
         $this->call('POST', 'v1/products');
         $this->assertRequestOk();
     }
@@ -44,7 +57,7 @@ class ProductControllerTest extends TestCase {
 	 */
     public function testShow()
     {
-        Product::shouldReceive('find')->once()->andReturn('foo');
+        $this->mock->shouldReceive('find')->once()->andReturn('foo');
         $this->call('GET', 'v1/products/1');
         $this->assertRequestOk();
     }
@@ -56,7 +69,7 @@ class ProductControllerTest extends TestCase {
 	 */
     public function testUpdate()
     {
-        Product::shouldReceive('update')->once()->andReturn('foo');
+        $this->mock->shouldReceive('update')->once()->andReturn('foo');
         $this->call('PUT', 'v1/products/1');
         $this->assertRequestOk();
     }
@@ -68,7 +81,7 @@ class ProductControllerTest extends TestCase {
 	 */
     public function testDestroy()
     {
-        Product::shouldReceive('delete')->once()->andReturn('foo');
+        $this->mock->shouldReceive('delete')->once()->andReturn('foo');
         $this->call('DELETE', 'v1/products/1');
         $this->assertRequestOk();
     }

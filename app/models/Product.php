@@ -11,7 +11,7 @@
  *
  * @author Kyle
  */
-class Product extends BaseModel {
+class Product extends Eloquent {
 
     /**
 	 * The table associated with the model.

@@ -7,13 +7,18 @@ use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 
 class ProductRepositoryTest extends TestCase {
 
+    /**
+	 * Setup the test environment.
+	 *
+	 * @return void
+	 */
     public function setUp()
     {
         parent::setUp();
         $this->repo = App::make('ProductRepository');
 
         Artisan::call('migrate');
-        $this->seed('DatabaseSeeder');
+        Artisan::call('db:seed');
     }
 
     public function testAllReturnsCollection()
