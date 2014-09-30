@@ -1,6 +1,9 @@
 <?php
 
 return array(
+  
+  'app_name' => 'Laravel Commerce',
+  'version' => 'v1',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -121,6 +124,7 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
+        'Barryvdh\Cors\CorsServiceProvider',
 	),
 
 	/*

@@ -11,10 +11,13 @@
 |
 */
 
+$version = Config::get('app.version');
+
 Route::group(
     array(
         'before' => 'auth.basic',
-        'prefix' => 'v1'
+        'prefix' => $version,
+        // 'after' => 'cors'
     ), function()
     {
         Route::resource('users', 'UserController');
@@ -31,7 +34,8 @@ Route::get('/', function()
         'page_title' => 'Laravel Commerce | An E-Commerce website built with Laravel',
         'site_name' => 'Laravel Commerce',
         'slogan' => 'An E-Commerce website built with Laravel',
-        'base_url' => 'http://laravelcommerce.local'
+        'base_url' => 'http://laravelcommerce.local',
+        'app_name' => Config::get('app.app_name')
     );
 
     return View::make('templates.html', $data)->nest('page', 'templates.page', $data);
