@@ -10,7 +10,7 @@ class UserRepository implements UserRepositoryInterface {
 	 */
     public function all()
     {
-        $collection = User::paginate();
+        $collection = User::all();
 
         if ($collection) {
             return $collection;
