@@ -15,9 +15,8 @@ $version = Config::get('app.version');
 
 Route::group(
     array(
-        'before' => 'auth.basic',
-        'prefix' => $version,
-        // 'after' => 'cors'
+        // 'before' => 'auth.basic',
+        'prefix' => $version
     ), function()
     {
         Route::resource('users', 'UserController');
