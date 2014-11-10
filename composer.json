@@ -9,7 +9,7 @@
 	},
     "require-dev": {
         "mockery/mockery": "dev-master",
-        "element-34/php-webdriver": "dev-master"
+        "phpunit/phpunit-selenium": ">=1.2"
     },
 	"autoload": {
 		"classmap": [
