@@ -24,7 +24,7 @@ interface UserRepositoryInterface {
 	 * @param  int  $id
 	 * @return Response
 	 */
-    public function save($data);
+    public function create($data);
 
     /**
 	 * Update the specified resource in storage.

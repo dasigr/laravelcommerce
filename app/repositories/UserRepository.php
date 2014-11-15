@@ -38,31 +38,25 @@ class UserRepository implements UserRepositoryInterface {
     }
 
     /**
-	 * Save the model to the database.
+	 * Save a new model and return the instance.
 	 *
-	 * @param  array  $data
-	 * @return bool
+	 * @param  array  $attributes
+	 * @return Model
 	 */
-    public function save($data)
+    public function create($attributes)
     {
-        $this->validate($data);
-        $data['password'] = Hash::make($data['password']);
-
-        $result = DB::transaction(function () use($data) {
-            $user = new User();
-            $user->fill($data);
-
-            if ($user->save()) {
-                $user->roles()->sync($data['roles']);
-                return true;
-            }
-        });
-
-        if ($result) {
-            return 'User was saved.';
-        }
-
-        return 'User was not saved.';
+        // Validate input data
+        $this->validate($attributes);
+        
+        // Encrypt password
+        $attributes['password'] = Hash::make($attributes['password']);
+        
+        // Create user
+        $user = new User();
+        $model = $user->create($attributes);
+        
+        // Return User Model
+        return $model;
     }
 
     /**

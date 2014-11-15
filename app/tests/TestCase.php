@@ -3,17 +3,17 @@
 class TestCase extends Illuminate\Foundation\Testing\TestCase {
 
     /**
-	 * Setup the test environment.
-	 *
-	 * @return void
-	 */
+     * Sets up the fixture, for example, open a network connection.
+     * This method is called before a test is executed.
+     */
     public function setUp()
     {
         parent::setUp();
     }
 
     /**
-     * Teardown objects.
+     * Tears down the fixture, for example, close a network connection.
+     * This method is called after a test is executed.
      */
     public function tearDown()
     {
