@@ -47,14 +47,14 @@ class UserRepository implements UserRepositoryInterface {
     {
         // Validate input data
         $this->validate($attributes);
-        
+
         // Encrypt password
         $attributes['password'] = Hash::make($attributes['password']);
-        
+
         // Create user
         $user = new User();
         $model = $user->create($attributes);
-        
+
         // Return User Model
         return $model;
     }
@@ -72,21 +72,10 @@ class UserRepository implements UserRepositoryInterface {
             $data['password'] = Hash::make($data['password']);
         }
 
-        $result = DB::transaction(function () use($data, $id) {
-            $user = $this->find($id);
-            $user->fill($data);
+        // Find user
+        $user = $this->find($id);
 
-            if ($user->save()) {
-                $user->roles()->sync($data['roles']);
-                return true;
-            }
-        });
-
-        if ($result) {
-            return 'User was updated.';
-        }
-
-        return 'User was not updated.';
+        return $user->update($data);
     }
 
     /**
@@ -97,13 +86,9 @@ class UserRepository implements UserRepositoryInterface {
 	 */
     public function delete($id)
     {
-        $model = $this->find($id);
+        $user = $this->find($id);
 
-        if ($model->delete()) {
-            return 'User was deleted.';
-        }
-
-        return 'User was not deleted.';
+        return $user->delete();
     }
 
     /**
@@ -114,11 +99,15 @@ class UserRepository implements UserRepositoryInterface {
 	 */
     public function validate($data, $id = null)
     {
+        // Validate username's first letter is an alphabet character
+        $username_array = str_split($data['username']);
+        $data['username_first_char'] = $username_array[0];
+
         $rules = User::$rules;
 
         if ($id) {
             $rules['username'] = 'required|unique:users,username,'.$id;
-            $rules['email'] = 'required|unique:users,email,'.$id;
+            $rules['email'] = 'required|email|unique:users,email,'.$id;
             $rules['password'] = 'sometimes|required';
         }
 

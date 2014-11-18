@@ -5,7 +5,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Pagination\Paginator;
 
 class UserRepositoryTest extends TestCase {
-    
+
     /**
      * Sets up the fixture, for example, open a network connection.
      * This method is called before a test is executed.
@@ -13,14 +13,14 @@ class UserRepositoryTest extends TestCase {
     public function setUp()
     {
         parent::setUp();
-        
+
         $this->repo = App::make('UserRepository');
-        
+
         // Create test database schema and test data
         Artisan::call('migrate');
         $this->seed();
     }
-    
+
     /**
      * Tears down the fixture, for example, close a network connection.
      * This method is called after a test is executed.
@@ -29,129 +29,210 @@ class UserRepositoryTest extends TestCase {
     {
         parent::tearDown();
     }
-    
+
     /**
-     * testStoreReturnsModel()
-     * 
+     * testValidateUsernameFails()
+     *
+     * @expectedException ValidationException
      * @return void
      */
-    public function testStoreReturnsModel()
+    public function testValidateUsernameFails()
     {
         // Prepare user attributes
         $attributes = array(
-            'username'                  => 'engineering_test1',
-            'email'                 => 'engineering_test1@a5project.com',
-            'password'              => '*test123'
+            'username'  => 'engineering_&^%$#@!',
+            'email'     => 'engineering_test1@a5project.com',
+            'password'  => '*test123'
         );
-        
-        // Create user and get user model.
-        $model = $this->repo->create($attributes);
-        
-        // Assert
-        $this->assertTrue($model instanceof Model);
-        $this->assertTrue($model->username === $attributes['username']);
-    }
-    
-    public function testFindAllReturnsCollection()
-    {
-        $response = $this->repo->all('foo');
-        $this->assertTrue($response instanceof Paginator);
-    }
-    
-    public function testFindByIdReturnsModel()
-    {
-        $response = $this->repo->find(1);
-        $this->assertTrue($response instanceof Model);
-    }
-    
-    public function testUpdateSaves()
-    {
-        $data = array(
-            'name'  => 'user',
-            'email' => 'user@example.com'
-        );
-        
-        $model = $this->repo->update(1, $data);
-        
-        /**
-         * TO DO: Fix error on missing roles column.
-         */
-        
-        $this->assertTrue($model instanceof Model);
-        $this->assertTrue($model->name === $data['name']);
-    }
-    
-    public function testDestroySaves()
-    {
-        $model = $this->repo->delete(1);
-        $this->assertTrue($model instanceof Model);
-        
-        try
-        {
-            $this->repo->find(1);
-        }
-        catch (NotFoundException $e)
-        {
-            return;
-        }
 
-        // $this->fail('NotFoundException was not raised');
+        // Create user
+        $model = $this->repo->create($attributes);
     }
-    
+
+    /**
+     * testValidateUsernameFirstCharFails()
+     *
+     * @expectedException ValidationException
+     * @return void
+     */
+    public function testValidateUsernameFirstCharFails()
+    {
+        // Prepare user attributes
+        $attributes = array(
+            'username'  => '1engineering_test',
+            'email'     => 'engineering_test1@a5project.com',
+            'password'  => '*test123'
+        );
+
+        // Create user
+        $model = $this->repo->create($attributes);
+    }
+
+    /**
+     * testValidateEmailFails()
+     *
+     * @expectedException ValidationException
+     * @return void
+     */
+    public function testValidateEmailFails()
+    {
+        // Prepare user attributes
+        $attributes = array(
+            'username'  => 'engineering_test1',
+            'email'     => 'dsfdsf sfs.com',
+            'password'  => '*test123'
+        );
+
+        // Create user
+        $this->repo->create($attributes);
+    }
+
+    /**
+     * testValidateEmailFails()
+     *
+     * @expectedException ValidationException
+     * @return void
+     */
+    public function testValidatePasswordFails()
+    {
+        // Prepare user attributes
+        $attributes = array(
+            'username'  => 'engineering_test1',
+            'email'     => 'engineering_test1@a5project.com',
+            'password'  => ''
+        );
+
+        // Create user
+        $this->repo->create($attributes);
+    }
+
+    /**
+     * testValidatePasses()
+     *
+     * @return void
+     */
     public function testValidatePasses()
     {
-        $data = array(
-            'name'                  => 'user',
-            'email'                 => 'user@example.com',
-            'password'              => 'user',
-            'password_confirmation' => 'user',
-            'roles'                 => '2'
+        // Prepare user attributes
+        $attributes = array(
+            'username'  => 'engineering_test_a',
+            'email'     => 'engineering_test_a@a5project.com',
+            'password'  => '*test123'
         );
-        
-        $response = $this->repo->validate($data);
-        $this->assertTrue($response);
-    }
-    
-    public function testValidateFails()
-    {
-        $data = array(
-            'name'                  => 'user',
-            'password'              => 'user',
-            // 'password_confirmation' => 'user',
-            'roles'                 => '2'
-        );
-        
-        try {
-            $this->repo->validate($data);
-        }
-        catch(ValidationException $expected)
-        {
-            return;
-        }
 
-        $this->fail('ValidationException was not raised');
+        // Create user
+        $model = $this->repo->create($attributes);
     }
-    
+
+    /**
+     * testCreateUser()
+     *
+     * @return void
+     */
+    public function testCreateUser()
+    {
+        // Prepare user attributes
+        $attributes = array(
+            'username'  => 'engineering_test_a',
+            'email'     => 'engineering_test_a@a5project.com',
+            'password'  => '*test123'
+        );
+
+        // Create user and get user model.
+        $user = $this->repo->create($attributes);
+
+        // Assert
+        $this->assertTrue($user instanceof Model);
+        $this->assertEquals($attributes['username'], $user->username);
+    }
+
+    /**
+     * testFindUser()
+     *
+     * @return void
+     */
+    public function testFindUser()
+    {
+        $user = $this->repo->find(2);
+
+        $this->assertTrue($user instanceof Model);
+        $this->assertEquals('engineering_test1', $user->username);
+        $this->assertEquals('engineering_test1@a5project.com', $user->email);
+    }
+
+    /**
+     * testUpdateUser()
+     *
+     * @return void
+     */
+    public function testUpdateUser()
+    {
+        // Prepare user attributes
+        $attributes = array(
+            'username'  => 'engineering_test1_updated',
+            'email'     => 'engineering_test1_updated@a5project.com'
+        );
+
+        $is_udpated = $this->repo->update(2, $attributes);
+        $this->assertTrue($is_udpated);
+
+        $user = $this->repo->find(2);
+        $this->assertEquals($attributes['username'], $user->username);
+        $this->assertEquals($attributes['email'], $user->email);
+    }
+
+    /**
+     * testDeleteUser()
+     *
+     * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
+     * @return void
+     */
+    public function testDeleteUser()
+    {
+        $is_deleted = $this->repo->delete(2);
+        $this->assertTrue($is_deleted);
+
+        $user = $this->repo->find(2);
+    }
+
+    /**
+     * testAllUsers()
+     *
+     * @return void
+     */
+    public function testAllUsers()
+    {
+        $users = $this->repo->all();
+        $this->assertTrue($users instanceof Collection);
+    }
+
+    /**
+     * testInstanceReturnsModel()
+     *
+     * @return void
+     */
     public function testInstanceReturnsModel()
     {
-        $response = $this->repo->instance();
-        $this->assertTrue($response instanceof Model);
+        $user = $this->repo->instance();
+        $this->assertTrue($user instanceof Model);
     }
 
+    /**
+     * testInstanceReturnsModelWithData()
+     *
+     * @return void
+     */
     public function testInstanceReturnsModelWithData()
     {
-        $data = array(
-            'name'                  => 'user',
-            'email'                 => 'user@example.com',
-            'password'              => 'user',
-            // 'password_confirmation' => 'user',
-            'roles'                 => '2'
+        $attributes = array(
+            'username'  => 'engineering_test2',
+            'email'     => 'engineering_test2@a5project.com',
+            'password'  => '*test123',
         );
 
-        $response = $this->repo->instance($data);
-        
-        $this->assertTrue($response instanceof Model);
-        $this->assertTrue($response->name === $data['name']);
+        $user = $this->repo->instance($attributes);
+
+        $this->assertTrue($user instanceof Model);
+        $this->assertEquals($user->username, $attributes['username']);
     }
-    
 }
