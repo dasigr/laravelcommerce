@@ -20,7 +20,8 @@
 			"app/database/migrations",
 			"app/database/seeds",
             "app/errors.php",
-			"app/tests/TestCase.php"
+			"app/tests/TestCase.php",
+			"app/tests/WebTestCase.php"
 		]
 	},
 	"scripts": {
