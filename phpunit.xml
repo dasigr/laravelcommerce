@@ -15,7 +15,8 @@
             <directory>./app/tests/</directory>
         </testsuite>
         <testsuite name="User">
-            <file>./app/tests/UserRepositoryTest.php</file>
+            <file>./app/tests/repositories/UserRepositoryTest.php</file>
+            <file>./app/tests/controllers/UserControllerTest.php</file>
         </testsuite>
     </testsuites>
 </phpunit>
