@@ -1,6 +1,8 @@
 <?php
 
 use \UserRepositoryInterface;
+use Illuminate\Http\Response;
+use Illuminate\Http\JsonResponse;
 
 class UserController extends \BaseController {
 
@@ -26,7 +28,13 @@ class UserController extends \BaseController {
 	 */
 	public function store()
 	{
-		return $this->repo->save(Input::all());
+		$data = array(
+		    'status' => 'OK',
+		    'message' => 'User was created',
+		    'user' => $this->repo->create( Input::all() )
+		);
+
+		return Response::create($data);
 	}
 
 	/**
