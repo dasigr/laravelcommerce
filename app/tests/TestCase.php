@@ -36,13 +36,4 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
 
         return require __DIR__ . '/../../bootstrap/start.php';
     }
-
-    /**
-     * Assert if Response is Ok
-     */
-    public function assertRequestOk()
-    {
-        $this->assertTrue($this->client->getResponse()
-            ->isOk());
-    }
 }

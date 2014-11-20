@@ -36,10 +36,11 @@ class UserControllerTest extends TestCase
 
         // Act
         $response = $this->call('GET', 'v1/users');
-        $users = $response->getContent();
 
-        // Assert
-        $this->assertRequestOk();
+        // Assert that we got a valid Response
+        $this->assertInstanceOf('Illuminate\Http\Response', $response);
+
+        $users = $response->getContent();
     }
 
     /**
@@ -80,9 +81,10 @@ class UserControllerTest extends TestCase
     {
         User::shouldReceive('find')->once()->andReturn('foo');
 
-        $this->call('GET', 'v1/users/1');
+        $response = $this->call('GET', 'v1/users/1');
 
-        $this->assertRequestOk();
+        // Assert that we got a valid Response
+        $this->assertInstanceOf('Illuminate\Http\Response', $response);
     }
 
     /**
@@ -94,9 +96,10 @@ class UserControllerTest extends TestCase
     {
         User::shouldReceive('update')->once()->andReturn('foo');
 
-        $this->call('PUT', 'v1/users/1');
+        $response = $this->call('PUT', 'v1/users/1');
 
-        $this->assertRequestOk();
+        // Assert that we got a valid Response
+        $this->assertInstanceOf('Illuminate\Http\Response', $response);
     }
 
     /**
@@ -108,8 +111,9 @@ class UserControllerTest extends TestCase
     {
         User::shouldReceive('delete')->once()->andReturn('foo');
 
-        $this->call('DELETE', 'v1/users/1');
+        $response = $this->call('DELETE', 'v1/users/1');
 
-        $this->assertRequestOk();
+        // Assert that we got a valid Response
+        $this->assertInstanceOf('Illuminate\Http\Response', $response);
     }
 }
