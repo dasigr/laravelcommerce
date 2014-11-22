@@ -2,6 +2,7 @@
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Response;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Auth;
 
 class UserControllerTest extends TestCase
 {
@@ -13,6 +14,10 @@ class UserControllerTest extends TestCase
     public function setUp()
     {
         parent::setUp();
+
+        // Create test database schema and test data
+        Artisan::call('migrate');
+        $this->seed();
     }
 
     /**
@@ -22,6 +27,15 @@ class UserControllerTest extends TestCase
     public function tearDown()
     {
         parent::tearDown();
+    }
+
+    public function testUserMustBeAuthenticated()
+    {
+        Auth::logout();
+
+        $response = $this->call('GET', 'v1/users');
+
+        $this->assertEquals('Invalid credentials', $response->getContent());
     }
 
     /**

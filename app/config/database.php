@@ -55,7 +55,7 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'laracomdb',
+			'database'  => 'laravelcommerce_local',
 			'username'  => 'root',
 			'password'  => '',
 			'charset'   => 'utf8',

@@ -15,7 +15,7 @@ $version = Config::get('app.version');
 
 Route::group(
     array(
-        // 'before' => 'auth.basic',
+        'before' => 'auth.basic',
         'prefix' => $version
     ), function()
     {
