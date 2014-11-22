@@ -9,8 +9,8 @@ class UsersTableSeeder extends Seeder {
 		$users = array(
 			array(
                 'username' => 'admin',
-                'password' => Hash::make('admin'),
-                'email'	=> 'administrator@example.com',
+                'password' => Hash::make('*admin123'),
+                'email'	=> 'admin@laravelcommerce.com',
                 'created_at' => $now,
                 'updated_at' => $now
             ),

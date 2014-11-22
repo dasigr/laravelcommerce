@@ -68,8 +68,10 @@ class UserControllerTest extends TestCase
         $this->assertInstanceOf('Illuminate\Http\Response', $response);
 
         // Assert that we got a valid User Model
-        $user = $response->getOriginalContent()['user'];
-        $this->assertInstanceOf('Illuminate\Database\Eloquent\Model', $user);
+        $content = $response->getOriginalContent();
+        $this->assertInstanceOf('Illuminate\Database\Eloquent\Model', $content['user']);
+        $this->assertEquals(200, $content['status_code']);
+        $this->assertEquals('User has been created.', $content['status_text']);
     }
 
     /**

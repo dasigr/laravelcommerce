@@ -29,8 +29,8 @@ class UserController extends \BaseController {
 	public function store()
 	{
 		$data = array(
-		    'status' => 'OK',
-		    'message' => 'User was created',
+		    'status_code' => 200,
+		    'status_text' => 'User has been created.',
 		    'user' => $this->repo->create( Input::all() )
 		);
 
